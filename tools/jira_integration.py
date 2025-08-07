@@ -2,6 +2,10 @@ import requests
 import os
 import json
 
+# Load secrets from .env in the project root
+env_path = os.path.join(os.path.dirname(__file__), '../.env')
+load_dotenv(dotenv_path=env_path)
+
 JIRA_BASE_URL = os.getenv("JIRA_BASE_URL")
 JIRA_EMAIL = os.getenv("JIRA_EMAIL")
 JIRA_API_TOKEN = os.getenv("JIRA_API_TOKEN")

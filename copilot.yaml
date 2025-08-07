@@ -1,0 +1,34 @@
+name: BacklogBuilderCopilot
+description: |
+  Generate a full Agile backlog from a Statement of Work (SOW) and High-Level Design (HLD),
+  then prepare a Jira-compatible bulk upload payload.
+inputs:
+  sow:
+    type: file
+    description: Upload or paste your Statement of Work document
+    default: inputs/sow.md
+  hld:
+    type: file
+    description: Upload or paste your High-Level Design document
+    default: inputs/hld.md
+steps:
+  - name: Extract Deliverables
+    uses: ./prompts/01_extract_deliverables.md
+    with:
+      sow: ${{ inputs.sow }}
+      hld: ${{ inputs.hld }}
+
+  - name: Map to Epics
+    uses: ./prompts/02_map_to_epics.md
+
+  - name: Generate User Stories
+    uses: ./prompts/03_generate_stories.md
+
+  - name: Infer Dependencies
+    uses: ./prompts/05_infer_dependencies.md
+
+  - name: Add Acceptance Criteria
+    uses: ./prompts/04_generate_acceptance_criteria.md
+
+  - name: Format for Jira
+    uses: ./prompts/06_review_and_format_for_jira.md
