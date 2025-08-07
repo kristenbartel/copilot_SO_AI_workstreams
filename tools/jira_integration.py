@@ -1,6 +1,7 @@
 import requests
 import os
 import json
+from dotenv import load_dotenv
 
 # Load secrets from .env in the project root
 env_path = os.path.join(os.path.dirname(__file__), '../.env')
