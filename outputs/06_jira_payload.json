@@ -1,0 +1,233 @@
+[
+  {
+    "fields": {
+      "summary": "User login with email and password",
+      "description": "As a user, I want to log in using my email and password so that I can access my account securely.\n\nAcceptance Criteria:\n• Given I am a registered user with valid credentials, when I submit my email and password, then I should be successfully logged in and receive an access token\n• Given I provide invalid credentials, when I attempt to log in, then I should receive an authentication error message\n• Given I have exceeded login attempts, when I try to log in, then my account should be temporarily locked with appropriate error messaging",
+      "labels": ["backend", "authentication", "login"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Build User Authentication System",
+      "customfield_10016": 5
+    }
+  },
+  {
+    "fields": {
+      "summary": "Enable multi-factor authentication",
+      "description": "As a user, I want to enable MFA on my account so that I can add an extra layer of security to protect my data.\n\nAcceptance Criteria:\n• Given I am logged in, when I enable MFA and provide a valid authenticator app, then MFA should be activated on my account\n• Given I have MFA enabled, when I log in, then I should be prompted for a second authentication factor\n• Given I provide an incorrect MFA code, when I submit it, then I should receive an error and be able to retry",
+      "labels": ["backend", "authentication", "mfa"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Build User Authentication System",
+      "customfield_10016": 8
+    }
+  },
+  {
+    "fields": {
+      "summary": "Implement JWT token management",
+      "description": "As a system, I want to generate and validate JWT tokens so that authenticated users can access protected resources.\n\nAcceptance Criteria:\n• Given a user successfully authenticates, when the system generates tokens, then an access token with 15-minute expiry and refresh token with 7-day expiry should be created\n• Given an expired access token, when the system validates it, then it should reject the request and return an authentication error\n• Given a valid refresh token, when the user requests a new access token, then a new access token should be generated",
+      "labels": ["backend", "authentication", "jwt"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Build User Authentication System",
+      "customfield_10016": 5
+    }
+  },
+  {
+    "fields": {
+      "summary": "Create OAuth integration endpoints",
+      "description": "As a user, I want to sign in with Google or Microsoft so that I can quickly access the system without creating a new account.\n\nAcceptance Criteria:\n• Given I choose to sign in with Google, when I authorize the application, then I should be logged in and my profile created if it doesn't exist\n• Given I have an existing account, when I sign in with OAuth, then my accounts should be linked appropriately\n• Given OAuth provider is unavailable, when I attempt OAuth login, then I should receive an appropriate error message",
+      "labels": ["backend", "authentication", "oauth"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Build User Authentication System",
+      "customfield_10016": 8
+    }
+  },
+  {
+    "fields": {
+      "summary": "Implement password reset functionality",
+      "description": "As a user, I want to reset my password via email so that I can regain access to my account if I forget my credentials.\n\nAcceptance Criteria:\n• Given I request a password reset, when I provide my email address, then I should receive a password reset email with a secure token\n• Given I have a valid reset token, when I submit a new password, then my password should be updated and I should be able to log in\n• Given an expired or invalid reset token, when I attempt to reset my password, then I should receive an error message",
+      "labels": ["backend", "authentication", "password-reset"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Build User Authentication System",
+      "customfield_10016": 3
+    }
+  },
+  {
+    "fields": {
+      "summary": "Create user profile",
+      "description": "As a new user, I want to create a profile with my personal information so that I can personalize my account experience.\n\nAcceptance Criteria:\n• Given I am a new user, when I submit valid profile information including name and email, then my profile should be created and stored\n• Given I submit incomplete required fields, when I create a profile, then I should receive validation errors for missing fields\n• Given I submit a duplicate email, when I create a profile, then I should receive an error indicating the email already exists",
+      "labels": ["backend", "profile", "create"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Develop User Profile Management API",
+      "customfield_10016": 3
+    }
+  },
+  {
+    "fields": {
+      "summary": "Update user profile information",
+      "description": "As a user, I want to update my profile details so that I can keep my account information current and accurate.\n\nAcceptance Criteria:\n• Given I am logged in, when I update my profile with valid information, then the changes should be saved and reflected in my profile\n• Given I try to update with invalid data, when I submit the changes, then I should receive validation errors\n• Given I update my email, when I save the changes, then I should receive an email verification for the new address",
+      "labels": ["backend", "profile", "update"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Develop User Profile Management API",
+      "customfield_10016": 2
+    }
+  },
+  {
+    "fields": {
+      "summary": "Upload and manage avatar images",
+      "description": "As a user, I want to upload and change my profile picture so that I can personalize my account appearance.\n\nAcceptance Criteria:\n• Given I am logged in, when I upload a valid image file, then it should be stored securely and associated with my profile\n• Given I upload an invalid file type, when I submit it, then I should receive an error message about supported formats\n• Given I have an existing avatar, when I upload a new one, then the old avatar should be replaced and the storage cleaned up",
+      "labels": ["backend", "profile", "avatar", "upload"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Develop User Profile Management API",
+      "customfield_10016": 5
+    }
+  },
+  {
+    "fields": {
+      "summary": "Manage user preferences",
+      "description": "As a user, I want to set and modify my account preferences so that the system behaves according to my needs.\n\nAcceptance Criteria:\n• Given I am logged in, when I update my preferences, then the changes should be saved and applied to my account experience\n• Given I set invalid preference values, when I submit them, then I should receive validation errors\n• Given I have preferences set, when I view my profile, then I should see my current preference settings",
+      "labels": ["backend", "profile", "preferences"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Develop User Profile Management API",
+      "customfield_10016": 3
+    }
+  },
+  {
+    "fields": {
+      "summary": "Delete user account",
+      "description": "As a user, I want to permanently delete my account so that I can remove my data from the system when no longer needed.\n\nAcceptance Criteria:\n• Given I am logged in, when I request account deletion, then I should receive confirmation and my account should be marked for deletion\n• Given I confirm account deletion, when the process completes, then all my personal data should be permanently removed from the system\n• Given I delete my account, when I try to log in afterwards, then I should receive an error that the account doesn't exist",
+      "labels": ["backend", "profile", "delete", "gdpr"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Develop User Profile Management API",
+      "customfield_10016": 5
+    }
+  },
+  {
+    "fields": {
+      "summary": "Define system roles and permissions",
+      "description": "As an administrator, I want to create and define roles with specific permissions so that I can control user access to system features.\n\nAcceptance Criteria:\n• Given I am an administrator, when I create a role with specific permissions, then the role should be saved with those permissions\n• Given I define overlapping permissions, when I create roles, then the permission structure should be properly validated\n• Given I delete a role, when users have that role assigned, then I should be notified about the impact and handle reassignment",
+      "labels": ["backend", "rbac", "roles"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Implement Role-Based Access Control",
+      "customfield_10016": 5
+    }
+  },
+  {
+    "fields": {
+      "summary": "Assign roles to users",
+      "description": "As an administrator, I want to assign roles to users so that they receive appropriate access permissions for their responsibilities.\n\nAcceptance Criteria:\n• Given I am an administrator, when I assign a role to a user, then the user should immediately receive those permissions\n• Given I remove a role from a user, when they access the system, then they should no longer have those permissions\n• Given I assign multiple roles, when checking user permissions, then all assigned role permissions should be aggregated",
+      "labels": ["backend", "rbac", "assignment"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Implement Role-Based Access Control",
+      "customfield_10016": 3
+    }
+  },
+  {
+    "fields": {
+      "summary": "Validate user permissions at runtime",
+      "description": "As a system, I want to check user permissions in real-time so that only authorized users can access protected resources.\n\nAcceptance Criteria:\n• Given a user requests access to a protected resource, when I check their permissions, then access should be granted only if they have the required permission\n• Given a user's permissions change, when they access cached permissions, then the cache should reflect the most current permissions\n• Given permission validation fails, when a user attempts access, then they should receive a clear access denied message",
+      "labels": ["backend", "rbac", "validation"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Implement Role-Based Access Control",
+      "customfield_10016": 8
+    }
+  },
+  {
+    "fields": {
+      "summary": "Audit role and permission changes",
+      "description": "As a compliance officer, I want to track all changes to user roles and permissions so that I can maintain an audit trail for security reviews.\n\nAcceptance Criteria:\n• Given any role or permission change occurs, when the change is made, then it should be logged with timestamp, user, and details\n• Given I need to review changes, when I query the audit log, then I should see a complete history of role and permission modifications\n• Given audit data exists, when generating compliance reports, then all relevant changes should be included in the report",
+      "labels": ["backend", "rbac", "audit"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Implement Role-Based Access Control",
+      "customfield_10016": 5
+    }
+  },
+  {
+    "fields": {
+      "summary": "View and search all users",
+      "description": "As an administrator, I want to view and search through all user accounts so that I can efficiently manage user information.\n\nAcceptance Criteria:\n• Given I am an administrator, when I request the user list, then I should see all users with pagination support\n• Given I search for users by email or name, when I submit the search, then I should receive filtered results matching the criteria\n• Given there are many users, when I view the list, then results should load quickly with proper pagination",
+      "labels": ["backend", "admin", "users", "search"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Create Admin Management Dashboard APIs",
+      "customfield_10016": 5
+    }
+  },
+  {
+    "fields": {
+      "summary": "Manage user account status",
+      "description": "As an administrator, I want to activate, deactivate, or suspend user accounts so that I can control user access to the system.\n\nAcceptance Criteria:\n• Given I am an administrator, when I deactivate a user account, then the user should no longer be able to log in\n• Given a user is deactivated, when I reactivate their account, then they should be able to log in again\n• Given I suspend a user temporarily, when the suspension period ends, then their access should be automatically restored",
+      "labels": ["backend", "admin", "user-management"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Create Admin Management Dashboard APIs",
+      "customfield_10016": 3
+    }
+  },
+  {
+    "fields": {
+      "summary": "Generate user activity reports",
+      "description": "As an administrator, I want to generate reports on user activity and system usage so that I can monitor system health and user engagement.\n\nAcceptance Criteria:\n• Given I am an administrator, when I request an activity report, then I should receive comprehensive user activity data for the specified time period\n• Given I need system metrics, when I generate reports, then I should see login rates, active users, and system usage statistics\n• Given I export report data, when the export completes, then I should receive the data in the requested format (CSV, PDF, etc.)",
+      "labels": ["backend", "admin", "analytics", "reporting"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Create Admin Management Dashboard APIs",
+      "customfield_10016": 8
+    }
+  },
+  {
+    "fields": {
+      "summary": "Configure system settings",
+      "description": "As an administrator, I want to modify system configuration settings so that I can customize the system behavior for organizational needs.\n\nAcceptance Criteria:\n• Given I am an administrator, when I update system settings, then the changes should be applied immediately and stored persistently\n• Given I modify security settings, when users access the system, then the new security policies should be enforced\n• Given I change configuration, when I view the settings, then I should see the current configuration values",
+      "labels": ["backend", "admin", "configuration"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Create Admin Management Dashboard APIs",
+      "customfield_10016": 5
+    }
+  },
+  {
+    "fields": {
+      "summary": "Create core user tables and schema",
+      "description": "As a developer, I want to implement the database schema for users, roles, and sessions so that the system can store and retrieve user data efficiently.",
+      "labels": ["backend", "database", "schema"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Design and Implement Database Foundation",
+      "customfield_10016": 5
+    }
+  },
+  {
+    "fields": {
+      "summary": "Implement database indexes for performance",
+      "description": "As a developer, I want to create optimized database indexes so that user queries respond within performance requirements.",
+      "labels": ["backend", "database", "performance"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Design and Implement Database Foundation",
+      "customfield_10016": 3
+    }
+  },
+  {
+    "fields": {
+      "summary": "Set up database migrations and versioning",
+      "description": "As a developer, I want to implement database migration scripts so that schema changes can be deployed safely and consistently.",
+      "labels": ["backend", "database", "migrations"],
+      "issuetype": { "name": "Story" },
+      "project": { "key": "UPMS" },
+      "customfield_10014": "Design and Implement Database Foundation",
+      "customfield_10016": 5
+    }
+  }
+]

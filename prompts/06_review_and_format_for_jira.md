@@ -64,6 +64,14 @@ stories:
 - [ ] Story points and epic link if provided
 - [ ] Output is valid JSON, array format
 
+### ⚠️ CRITICAL: Validate JSON Format
+- [ ] The JSON syntax is valid (proper brackets, commas, quotes)
+- [ ] No markdown code blocks (```json or ```) are embedded in the output
+- [ ] All strings are properly escaped and quoted
+- [ ] The file can be parsed by a standard JSON parser
+- [ ] Array structure is maintained with proper comma separation
+- [ ] If validation fails, immediately correct the formatting errors and re-validate
+
 ---
 
 ## ⚠️ Anti-Patterns to Avoid

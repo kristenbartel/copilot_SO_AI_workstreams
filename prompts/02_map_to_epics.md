@@ -32,6 +32,14 @@ You will receive a list of deliverables extracted from a Statement of Work (SOW)
 3. **Validate Against Constraints & Checklist**  
    Ensure each Epic meets the requirements below and avoids anti-patterns.
 
+4. **⚠️ CRITICAL: Validate YAML Format**  
+   After generating your output, **MUST** verify that:
+   - The YAML syntax is valid (proper indentation, no syntax errors)
+   - No markdown code blocks (```yaml or ```) are embedded in the output
+   - All strings are properly quoted where necessary
+   - The file can be parsed by a standard YAML parser
+   - If validation fails, immediately correct the formatting errors and re-validate
+
 ---
 
 ### 📥 Input Format

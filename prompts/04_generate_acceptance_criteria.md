@@ -68,6 +68,13 @@ acceptance_criteria:
 - [ ] Specific edge cases or error states when relevant
 - [ ] Criteria must not simply restate the user story
 
+### ⚠️ CRITICAL: Validate YAML Format
+- [ ] The YAML syntax is valid (proper indentation, no syntax errors)
+- [ ] No markdown code blocks (```yaml or ```) are embedded in the output
+- [ ] All strings are properly quoted where necessary
+- [ ] The file can be parsed by a standard YAML parser
+- [ ] If validation fails, immediately correct the formatting errors and re-validate
+
 ---
 
 ## ⚠️ Anti-Patterns to Avoid
