@@ -1,0 +1,204 @@
+# Step 4: Generate Acceptance Criteria Output
+
+acceptance_criteria:
+  # Build User Authentication System Stories
+  - epic_ref: "Build User Authentication System"
+    title: "User login with email and password"
+    description: "As a user, I want to log in using my email and password so that I can access my account securely."
+    labels: ["backend", "authentication", "login"]
+    story_points: 5
+    format: "gherkin"
+    criteria:
+      - "Given I am a registered user with valid credentials, when I submit my email and password, then I should be successfully logged in and receive an access token"
+      - "Given I provide invalid credentials, when I attempt to log in, then I should receive an authentication error message"
+      - "Given I have exceeded login attempts, when I try to log in, then my account should be temporarily locked with appropriate error messaging"
+
+  - epic_ref: "Build User Authentication System"
+    title: "Enable multi-factor authentication"
+    description: "As a user, I want to enable MFA on my account so that I can add an extra layer of security to protect my data."
+    labels: ["backend", "authentication", "mfa"]
+    story_points: 8
+    format: "gherkin"
+    criteria:
+      - "Given I am logged in, when I enable MFA and provide a valid authenticator app, then MFA should be activated on my account"
+      - "Given I have MFA enabled, when I log in, then I should be prompted for a second authentication factor"
+      - "Given I provide an incorrect MFA code, when I submit it, then I should receive an error and be able to retry"
+
+  - epic_ref: "Build User Authentication System"
+    title: "Implement JWT token management"
+    description: "As a system, I want to generate and validate JWT tokens so that authenticated users can access protected resources."
+    labels: ["backend", "authentication", "jwt"]
+    story_points: 5
+    format: "gherkin"
+    criteria:
+      - "Given a user successfully authenticates, when the system generates tokens, then an access token with 15-minute expiry and refresh token with 7-day expiry should be created"
+      - "Given an expired access token, when the system validates it, then it should reject the request and return an authentication error"
+      - "Given a valid refresh token, when the user requests a new access token, then a new access token should be generated"
+
+  - epic_ref: "Build User Authentication System"
+    title: "Create OAuth integration endpoints"
+    description: "As a user, I want to sign in with Google or Microsoft so that I can quickly access the system without creating a new account."
+    labels: ["backend", "authentication", "oauth"]
+    story_points: 8
+    format: "gherkin"
+    criteria:
+      - "Given I choose to sign in with Google, when I authorize the application, then I should be logged in and my profile created if it doesn't exist"
+      - "Given I have an existing account, when I sign in with OAuth, then my accounts should be linked appropriately"
+      - "Given OAuth provider is unavailable, when I attempt OAuth login, then I should receive an appropriate error message"
+
+  - epic_ref: "Build User Authentication System"
+    title: "Implement password reset functionality"
+    description: "As a user, I want to reset my password via email so that I can regain access to my account if I forget my credentials."
+    labels: ["backend", "authentication", "password-reset"]
+    story_points: 3
+    format: "gherkin"
+    criteria:
+      - "Given I request a password reset, when I provide my email address, then I should receive a password reset email with a secure token"
+      - "Given I have a valid reset token, when I submit a new password, then my password should be updated and I should be able to log in"
+      - "Given an expired or invalid reset token, when I attempt to reset my password, then I should receive an error message"
+
+  # Develop User Profile Management API Stories
+  - epic_ref: "Develop User Profile Management API"
+    title: "Create user profile"
+    description: "As a new user, I want to create a profile with my personal information so that I can personalize my account experience."
+    labels: ["backend", "profile", "create"]
+    story_points: 3
+    format: "gherkin"
+    criteria:
+      - "Given I am a new user, when I submit valid profile information including name and email, then my profile should be created and stored"
+      - "Given I submit incomplete required fields, when I create a profile, then I should receive validation errors for missing fields"
+      - "Given I submit a duplicate email, when I create a profile, then I should receive an error indicating the email already exists"
+
+  - epic_ref: "Develop User Profile Management API"
+    title: "Update user profile information"
+    description: "As a user, I want to update my profile details so that I can keep my account information current and accurate."
+    labels: ["backend", "profile", "update"]
+    story_points: 2
+    format: "gherkin"
+    criteria:
+      - "Given I am logged in, when I update my profile with valid information, then the changes should be saved and reflected in my profile"
+      - "Given I try to update with invalid data, when I submit the changes, then I should receive validation errors"
+      - "Given I update my email, when I save the changes, then I should receive an email verification for the new address"
+
+  - epic_ref: "Develop User Profile Management API"
+    title: "Upload and manage avatar images"
+    description: "As a user, I want to upload and change my profile picture so that I can personalize my account appearance."
+    labels: ["backend", "profile", "avatar", "upload"]
+    story_points: 5
+    format: "gherkin"
+    criteria:
+      - "Given I am logged in, when I upload a valid image file, then it should be stored securely and associated with my profile"
+      - "Given I upload an invalid file type, when I submit it, then I should receive an error message about supported formats"
+      - "Given I have an existing avatar, when I upload a new one, then the old avatar should be replaced and the storage cleaned up"
+
+  - epic_ref: "Develop User Profile Management API"
+    title: "Manage user preferences"
+    description: "As a user, I want to set and modify my account preferences so that the system behaves according to my needs."
+    labels: ["backend", "profile", "preferences"]
+    story_points: 3
+    format: "gherkin"
+    criteria:
+      - "Given I am logged in, when I update my preferences, then the changes should be saved and applied to my account experience"
+      - "Given I set invalid preference values, when I submit them, then I should receive validation errors"
+      - "Given I have preferences set, when I view my profile, then I should see my current preference settings"
+
+  - epic_ref: "Develop User Profile Management API"
+    title: "Delete user account"
+    description: "As a user, I want to permanently delete my account so that I can remove my data from the system when no longer needed."
+    labels: ["backend", "profile", "delete", "gdpr"]
+    story_points: 5
+    format: "gherkin"
+    criteria:
+      - "Given I am logged in, when I request account deletion, then I should receive confirmation and my account should be marked for deletion"
+      - "Given I confirm account deletion, when the process completes, then all my personal data should be permanently removed from the system"
+      - "Given I delete my account, when I try to log in afterwards, then I should receive an error that the account doesn't exist"
+
+  # Implement Role-Based Access Control Stories
+  - epic_ref: "Implement Role-Based Access Control"
+    title: "Define system roles and permissions"
+    description: "As an administrator, I want to create and define roles with specific permissions so that I can control user access to system features."
+    labels: ["backend", "rbac", "roles"]
+    story_points: 5
+    format: "gherkin"
+    criteria:
+      - "Given I am an administrator, when I create a role with specific permissions, then the role should be saved with those permissions"
+      - "Given I define overlapping permissions, when I create roles, then the permission structure should be properly validated"
+      - "Given I delete a role, when users have that role assigned, then I should be notified about the impact and handle reassignment"
+
+  - epic_ref: "Implement Role-Based Access Control"
+    title: "Assign roles to users"
+    description: "As an administrator, I want to assign roles to users so that they receive appropriate access permissions for their responsibilities."
+    labels: ["backend", "rbac", "assignment"]
+    story_points: 3
+    format: "gherkin"
+    criteria:
+      - "Given I am an administrator, when I assign a role to a user, then the user should immediately receive those permissions"
+      - "Given I remove a role from a user, when they access the system, then they should no longer have those permissions"
+      - "Given I assign multiple roles, when checking user permissions, then all assigned role permissions should be aggregated"
+
+  - epic_ref: "Implement Role-Based Access Control"
+    title: "Validate user permissions at runtime"
+    description: "As a system, I want to check user permissions in real-time so that only authorized users can access protected resources."
+    labels: ["backend", "rbac", "validation"]
+    story_points: 8
+    format: "gherkin"
+    criteria:
+      - "Given a user requests access to a protected resource, when I check their permissions, then access should be granted only if they have the required permission"
+      - "Given a user's permissions change, when they access cached permissions, then the cache should reflect the most current permissions"
+      - "Given permission validation fails, when a user attempts access, then they should receive a clear access denied message"
+
+  - epic_ref: "Implement Role-Based Access Control"
+    title: "Audit role and permission changes"
+    description: "As a compliance officer, I want to track all changes to user roles and permissions so that I can maintain an audit trail for security reviews."
+    labels: ["backend", "rbac", "audit"]
+    story_points: 5
+    format: "gherkin"
+    criteria:
+      - "Given any role or permission change occurs, when the change is made, then it should be logged with timestamp, user, and details"
+      - "Given I need to review changes, when I query the audit log, then I should see a complete history of role and permission modifications"
+      - "Given audit data exists, when generating compliance reports, then all relevant changes should be included in the report"
+
+  # Create Admin Management Dashboard APIs Stories
+  - epic_ref: "Create Admin Management Dashboard APIs"
+    title: "View and search all users"
+    description: "As an administrator, I want to view and search through all user accounts so that I can efficiently manage user information."
+    labels: ["backend", "admin", "users", "search"]
+    story_points: 5
+    format: "gherkin"
+    criteria:
+      - "Given I am an administrator, when I request the user list, then I should see all users with pagination support"
+      - "Given I search for users by email or name, when I submit the search, then I should receive filtered results matching the criteria"
+      - "Given there are many users, when I view the list, then results should load quickly with proper pagination"
+
+  - epic_ref: "Create Admin Management Dashboard APIs"
+    title: "Manage user account status"
+    description: "As an administrator, I want to activate, deactivate, or suspend user accounts so that I can control user access to the system."
+    labels: ["backend", "admin", "user-management"]
+    story_points: 3
+    format: "gherkin"
+    criteria:
+      - "Given I am an administrator, when I deactivate a user account, then the user should no longer be able to log in"
+      - "Given a user is deactivated, when I reactivate their account, then they should be able to log in again"
+      - "Given I suspend a user temporarily, when the suspension period ends, then their access should be automatically restored"
+
+  - epic_ref: "Create Admin Management Dashboard APIs"
+    title: "Generate user activity reports"
+    description: "As an administrator, I want to generate reports on user activity and system usage so that I can monitor system health and user engagement."
+    labels: ["backend", "admin", "analytics", "reporting"]
+    story_points: 8
+    format: "gherkin"
+    criteria:
+      - "Given I am an administrator, when I request an activity report, then I should receive comprehensive user activity data for the specified time period"
+      - "Given I need system metrics, when I generate reports, then I should see login rates, active users, and system usage statistics"
+      - "Given I export report data, when the export completes, then I should receive the data in the requested format (CSV, PDF, etc.)"
+
+  - epic_ref: "Create Admin Management Dashboard APIs"
+    title: "Configure system settings"
+    description: "As an administrator, I want to modify system configuration settings so that I can customize the system behavior for organizational needs."
+    labels: ["backend", "admin", "configuration"]
+    story_points: 5
+    format: "gherkin"
+    criteria:
+      - "Given I am an administrator, when I update system settings, then the changes should be applied immediately and stored persistently"
+      - "Given I modify security settings, when users access the system, then the new security policies should be enforced"
+      - "Given I change configuration, when I view the settings, then I should see the current configuration values"

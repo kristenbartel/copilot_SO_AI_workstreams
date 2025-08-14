@@ -32,3 +32,6 @@ steps:
 
   - name: Format for Jira
     uses: ./prompts/06_review_and_format_for_jira.md
+
+  - name: Create Stories in Jira
+    uses: ./prompts/07_create_jira_stories.md
